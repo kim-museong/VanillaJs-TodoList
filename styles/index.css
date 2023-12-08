@@ -10,11 +10,16 @@ body {
 }
 
 button {
+  cursor: pointer;
+  width: 100px;
   padding: 5px 20px;
   border: none;
   border-radius: 10px;
+  background-color: black;
+  color: white;
 }
 
 #title {
   text-align: center;
+  margin-bottom: 60px;
 }

@@ -6,8 +6,10 @@
     <!-- js 불러오기 -->
     <script src="/index.js" defer></script>
     <!-- css 불러오기 -->
-    <!-- <link rel="stylesheet" href="/styles/index.css" />
-    <link rel="stylesheet" href="/styles/search.css" /> -->
+    <link rel="stylesheet" href="/styles/index.css" />
+    <link rel="stylesheet" href="/styles/search.css" />
+    <link rel="stylesheet" href="/styles//editor.css" />
+    <link rel="stylesheet" href="/styles/posts.css" />
     <title>Vanilla JavaScript TodoList</title>
   </head>
   <body>
@@ -21,9 +23,11 @@
     </div>
 
     <!-- 저장할 글을 쓸 폼박스 -->
-    <form>
+    <form class="editor">
       <textarea placeholder="내용을 입력하세요" class="content"></textarea>
-      <button type="submit" class="contentBtn">저장</button>
+      <div>
+        <button type="submit" class="contentBtn">저장</button>
+      </div>
     </form>
 
     <!-- 저장된 글 보여주는 박스 -->
