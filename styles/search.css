@@ -1,0 +1,18 @@
+#searchBox {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px auto;
+  padding: 0 5px;
+  border: 2px solid black;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+#search {
+  width: 70%;
+  padding: 10px;
+  border: none;
+  outline: none;
+}

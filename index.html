@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- js 불러오기 -->
+    <script src="/index.js" defer></script>
+    <!-- css 불러오기 -->
+    <!-- <link rel="stylesheet" href="/styles/index.css" />
+    <link rel="stylesheet" href="/styles/search.css" /> -->
+    <title>Vanilla JavaScript TodoList</title>
+  </head>
+  <body>
+    <!-- 제목 -->
+    <h1 id="title">Vanilla JavaScript TodoList</h1>
+
+    <!-- 검색창 -->
+    <div id="searchBox">
+      <input id="search" placeholder="검색창" />
+      <button class="searchBtn">검색</button>
+    </div>
+
+    <!-- 저장할 글을 쓸 폼박스 -->
+    <form>
+      <textarea placeholder="내용을 입력하세요" class="content"></textarea>
+      <button type="submit" class="contentBtn">저장</button>
+    </form>
+
+    <!-- 저장된 글 보여주는 박스 -->
+    <div class="viewPosts"></div>
+  </body>
+</html>
