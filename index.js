@@ -3,10 +3,7 @@ const searchBtn = document.querySelector(".searchBtn");
 const contentValue = document.querySelector(".content");
 const contentBtn = document.querySelector(".contentBtn");
 const viewPosts = document.querySelector(".viewPosts");
-
-// 작성글 저장 배열
-let id = 0;
-const posts = [];
+const xhr = new XMLHttpRequest();
 
 // search 관련
 searchBtn.addEventListener("click", () => {
@@ -14,29 +11,17 @@ searchBtn.addEventListener("click", () => {
   searchViewHandler(searchValue.value);
 });
 
-// 글 작성 관련
+/** 글 저장버튼함수 */
 contentBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  console.log("작성내용", contentValue.value);
-  posts.push({ id, content: contentValue.value });
-  id++;
+  addPostHandler(contentValue.value);
   contentValue.value = "";
-  console.log(posts, `nextId: ${id}`);
-  postsViewHandler();
 });
 
 /** 글 보이기 함수 */
-const postsViewHandler = () => {
+const postsViewHandler = (posts) => {
   // 값 초기화
   viewPosts.textContent = "";
-
-  // 변경된 값 추가
-  posts.forEach((post) => {
-    console.log(post);
-    const postBox = document.createElement("li");
-    postBox.textContent = post.content;
-    viewPosts.appendChild(postBox);
-  });
 };
 
 /** 검색결과 함수 */
@@ -57,5 +42,42 @@ const searchViewHandler = (keyword) => {
 
   if (!found) {
     viewPosts.textContent = "결과가 없습니다.";
+  }
+};
+
+const getPostsHandler = () => {
+  xhr.open("GET", "http://localhost:3000/posts");
+  xhr.send();
+  xhr.onload = () => {
+    if (xhr.status === 200) {
+      viewPosts.textContent = "";
+      const posts = JSON.parse(xhr.response); // JSON형식 변환
+      posts.forEach((post) => {
+        console.log(post);
+        const postBox = document.createElement("li");
+        postBox.textContent = post.content;
+        viewPosts.appendChild(postBox);
+      });
+    } else {
+      console.error("posts불러오기오류", xhr.status, xhr.statusText);
+    }
+  };
+};
+getPostsHandler();
+
+/** 글저장 함수 */
+const addPostHandler = (content) => {
+  if (content !== "") {
+    xhr.open("POST", "http://localhost:3000/posts");
+    xhr.setRequestHeader("content-type", "application/json; charset=UTF-8");
+    xhr.send(JSON.stringify({ content: content }));
+
+    xhr.onload = () => {
+      if (xhr.status === 201) {
+        getPostsHandler();
+      } else {
+        console.log(xhr.status, xhr.statusText);
+      }
+    };
   }
 };

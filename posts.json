@@ -1,0 +1,20 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "content": "HTML"
+    },
+    {
+      "id": 2,
+      "content": "CSS"
+    },
+    {
+      "id": 3,
+      "content": "JAVASCRIPT"
+    },
+    {
+      "id": 4,
+      "content": "REACT"
+    }
+  ]
+}
